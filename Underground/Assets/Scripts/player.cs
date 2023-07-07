@@ -10,12 +10,12 @@ public class player : MonoBehaviour
     public Vector2 speed = new Vector2(10, 0);
     public bool isGrounded;
     public int jumpForce;
-
-    
+    public Animator anim;
+    public SpriteRenderer sprt;
     // Start is called before the first frame update
     void Start()
     {
-        
+        anim = GetComponent<Animator>();
     }
 
     private void OnCollisionStay2D(Collision2D collision)
@@ -52,7 +52,20 @@ public class player : MonoBehaviour
         if (isGrounded && Input.GetKeyDown(KeyCode.Space))
         {
             GetComponent<Rigidbody2D>().AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
+            anim.SetInteger("transition", 2);
         }
+        if(Input.GetKeyDown(KeyCode.D)){
+            anim.SetInteger("transition", 1);
+            sprt.flipX = false;
+        }
+        if(Input.GetKeyDown(KeyCode.A)){
+            anim.SetInteger("transition", 1);
+            sprt.flipX = true;
+        }
+        if(Input.GetKeyUp(KeyCode.A) || Input.GetKeyUp(KeyCode.D) || Input.GetKeyUp(KeyCode.Space) && isGrounded == true){
+            anim.SetInteger("transition", 0);
+        }
+        
 
     
     }
