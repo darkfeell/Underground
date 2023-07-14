@@ -136,6 +136,7 @@ MonoBehaviour:
   movingRight: 1
   distance: 3
   groundDetection: {fileID: 4872292752340077992}
+  health: 5
 --- !u!50 &4872292752862336503
 Rigidbody2D:
   serializedVersion: 4

@@ -12,6 +12,7 @@ public class Enemy1 : MonoBehaviour
     public float distance;
 
     public Transform groundDetection;
+    public float health;
     // Start is called before the first frame update
     void Start()
     {
@@ -37,6 +38,14 @@ public class Enemy1 : MonoBehaviour
                 movingRight = true;
             }
         }
+
+        if(health <= 0){
+            Destroy(gameObject);
+        }
+    }
+    public void takeDamage(int damage){
+        health -= damage;
+
     }
 }
 

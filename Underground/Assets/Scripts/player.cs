@@ -6,16 +6,21 @@ using UnityEngine.SceneManagement;
 
 public class player : MonoBehaviour
 {
-
-    public Vector2 speed = new Vector2(10, 0);
+    public Rigidbody2D rig;
+    public int speed;
     public bool isGrounded;
     public int jumpForce;
     public Animator anim;
     public SpriteRenderer sprt;
+    //public GameObject attackPoint;
+    //public float rad;
+    //public LayerMask enemies;
+    //public float inputX;
     // Start is called before the first frame update
     void Start()
     {
         anim = GetComponent<Animator>();
+        rig = GetComponent<Rigidbody2D>();
     }
 
     private void OnCollisionStay2D(Collision2D collision)
@@ -43,11 +48,18 @@ public class player : MonoBehaviour
         float inputX = Input.GetAxisRaw("Horizontal");
         float inputY = Input.GetAxisRaw("Vertical");
 
-        Vector3 movement = new Vector3(speed.x * inputX, speed.y * inputY, 0);
+        Vector3 inputTeclado = new Vector3(inputX, 0, 0);
+        transform.position += inputTeclado * speed * Time.deltaTime;
 
-        movement *= Time.deltaTime;
         
-        transform.Translate((movement));
+
+        //Vector3 movement = new Vector3(speed.x * inputX, speed.y * inputY, 0);
+
+        //movement *= Time.deltaTime;
+        
+        //transform.Translate((movement));
+
+        //rig.velocity = new Vector2(speed * inputX, rig.velocity.y);
 
         if (isGrounded && Input.GetKeyDown(KeyCode.Space))
         {
@@ -66,7 +78,17 @@ public class player : MonoBehaviour
             anim.SetInteger("transition", 0);
         }
         
-
+        
     
     }
+    //public void attack(){
+            //Collider2D[] enemy = Physics2D.OverlapCircleAll(attackPoint.transform.position, rad, enemies);
+
+            //foreach(Collider2D enemyGameobject in enemies){
+
+            //}
+        //}
+    //private void OnDrawGizmos(){
+        //Gizmos.DrawWireSphere
+    //}
 }
