@@ -64,22 +64,30 @@ public class player : MonoBehaviour
         if (isGrounded && Input.GetKeyDown(KeyCode.Space))
         {
             GetComponent<Rigidbody2D>().AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
-            anim.SetInteger("transition", 2);
+            anim.SetBool("isJumping", true);
+            anim.SetBool("isWalking", false);
+            anim.SetBool("isIdle", false);
         }
-        if(Input.GetKeyDown(KeyCode.D)){
-            anim.SetInteger("transition", 1);
+        if(Input.GetKeyDown(KeyCode.D) && isGrounded){
+            anim.SetBool("isJumping", false);
+            anim.SetBool("isWalking", true);
+            anim.SetBool("isIdle", false);
             sprt.flipX = false;
         }
-        if(Input.GetKeyDown(KeyCode.A)){
-            anim.SetInteger("transition", 1);
+        if(Input.GetKeyDown(KeyCode.A) && isGrounded){
+            anim.SetBool("isJumping", false);
+            anim.SetBool("isWalking", true);
+            anim.SetBool("isIdle", false);
             sprt.flipX = true;
         }
         if(Input.GetKeyUp(KeyCode.A) || Input.GetKeyUp(KeyCode.D) || Input.GetKeyUp(KeyCode.Space) && isGrounded == true){
-            anim.SetInteger("transition", 0);
+            anim.SetBool("isJumping", false);
+            anim.SetBool("isWalking", false);
+            anim.SetBool("isIdle", true);
         }
-        
-        
-    
+
+
+
     }
     //public void attack(){
             //Collider2D[] enemy = Physics2D.OverlapCircleAll(attackPoint.transform.position, rad, enemies);

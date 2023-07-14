@@ -10,6 +10,7 @@ public class attack : MonoBehaviour
     public Transform attackPosition;
     public float attackRange;
     public int damage;
+    
     // Start is called before the first frame update
     void Start()
     {
@@ -21,6 +22,7 @@ public class attack : MonoBehaviour
     {
         if(attackTime == 0){
             if(Input.GetKey(KeyCode.K)){
+                
                 Collider2D[] enemies = Physics2D.OverlapCircleAll(attackPosition.position, attackRange, enem);
                 for(int i = 0; i < enemies.Length; i++){
                     enemies[i].GetComponent<Enemy1>().health -= damage;
