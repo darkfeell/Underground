@@ -20,7 +20,7 @@ public class player : MonoBehaviour
         anim = GetComponent<Animator>();
         rig = GetComponent<Rigidbody2D>();
 
-        //GameController.instance.updateLives(health);
+        GameController.Instance.updateLives(health);
     }
 
     private void OnCollisionStay2D(Collision2D collision)
@@ -32,7 +32,7 @@ public class player : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.collider.CompareTag("enemy"))
+        if (collision.collider.CompareTag("enemy") && health <= 0)
         {
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         }
@@ -91,12 +91,13 @@ public class player : MonoBehaviour
             attacking = true;
             yield return new WaitForSeconds(0.2f);
             anim.SetInteger("transition", 0);
+            attacking = false;
         }
     }
     public void damage(int dmg){
         health -= dmg;
         anim.SetTrigger("hit");
-        //GameController.instance.updateLives(health);
+        GameController.Instance.updateLives(health);
 
         if(transform.rotation.y == 0){
             transform.position += new Vector3(-1,0,0);

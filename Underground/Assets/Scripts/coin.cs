@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class coin : MonoBehaviour
 {
+    public int scoreValue;
     // Start is called before the first frame update
     void Start()
     {
@@ -19,6 +20,8 @@ public class coin : MonoBehaviour
     private void OnCollisionEnter2D(Collision2D collision){
         if(collision.gameObject.tag == "Player"){
             Destroy(gameObject);
+
+            GameController.Instance.updateScore(scoreValue);
         }
     }
 }
