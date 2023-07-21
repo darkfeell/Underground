@@ -27,7 +27,6 @@ public class attack : MonoBehaviour
                 for(int i = 0; i < enemies.Length; i++){
                     enemies[i].GetComponent<Enemy1>().health -= damage;
                 } 
-
             }
             attackTime = startAttackTime;
         }
