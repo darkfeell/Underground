@@ -7,6 +7,7 @@ TagManager:
   - enemy
   - Ground
   - pit
+  - checkpoint
   layers:
   - Default
   - TransparentFX

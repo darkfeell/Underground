@@ -47,6 +47,7 @@ public class Enemy1 : MonoBehaviour
         health -= damage;
 
     }
+    
 }
 
 

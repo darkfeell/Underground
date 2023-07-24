@@ -14,27 +14,30 @@ public class player : MonoBehaviour
     public SpriteRenderer sprt;
     public bool attacking;
     public int health = 3;
+    private AudioSource sound;
+    public Vector3 respawnPoint;
+    public static player play;
     // Start is called before the first frame update
     void Start()
     {
         anim = GetComponent<Animator>();
         rig = GetComponent<Rigidbody2D>();
-
+        sound = GetComponent<AudioSource>();
+        respawnPoint = transform.position;
         GameController.Instance.updateLives(health);
     }
 
-    private void OnCollisionStay2D(Collision2D collision)
-    {
-        if(collision.collider.CompareTag("Ground")){
-            isJumping = false;
-        }
-    }
+    
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.collider.CompareTag("enemy") && health <= 0)
+        if (collision.collider.CompareTag("enemy"))
         {
-            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+            damage(1);
+            
+        }
+        if(collision.collider.CompareTag("Ground")){
+            isJumping = false;
         }
         
     }
@@ -42,9 +45,12 @@ public class player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Move();
         Jump();
         meleeAttack();
+    }
+
+    void FixedUpdate(){
+        Move();
     }
 
     void Move(){
@@ -92,25 +98,47 @@ public class player : MonoBehaviour
             yield return new WaitForSeconds(0.2f);
             anim.SetInteger("transition", 0);
             attacking = false;
+            sound.Play();
         }
     }
     public void damage(int dmg){
         health -= dmg;
         anim.SetTrigger("hit");
         GameController.Instance.updateLives(health);
+        Debug.Log("l");
 
         if(transform.rotation.y == 0){
-            transform.position += new Vector3(-1,0,0);
+            transform.position += new Vector3(-0.5f,0,0);
 
         }
         if(transform.rotation.y == 180){
-            transform.position += new Vector3(-1,0,0);
+            transform.position += new Vector3(0.5f,0,0);
             
         }
 
         if(health <= 0){
-
+            GameController.Instance.GameOver();
+         
         }
     }
-    
+
+    public void increaseHealth(int value)
+    {
+        health += value;
+        GameController.Instance.updateLives(health);
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.CompareTag("pit"))
+        {
+            GameController.Instance.GameOver();
+            transform.position = respawnPoint;
+        }
+        else if (collision.CompareTag("checkpoint"))
+        {
+            respawnPoint = transform.position;
+        }
+    }
+
 }
