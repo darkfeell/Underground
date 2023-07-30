@@ -69,4 +69,8 @@ public class GameController : MonoBehaviour
         //player.play.transform.position = player.play.respawnPoint;
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
+    //public void LoadNextScene()
+    //{
+        //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+    //}
 }

@@ -11,4 +11,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Leicester Square.unity
     guid: b43d28dc86f967546a686a9a725d059a
+  - enabled: 1
+    path: Assets/Scenes/Tottenham Court Road.unity
+    guid: f512b7b1d34f9be4c983bf63fb952230
   m_configObjects: {}
