@@ -15,6 +15,9 @@ public class GameController : MonoBehaviour
     public GameObject pause;
     private bool isPaused;
     public GameObject over;
+
+    public TMPro.TextMeshProUGUI ticketText;
+    public int tickets;
     // Start is called before the first frame update
     void Awake()
     {
@@ -62,6 +65,12 @@ public class GameController : MonoBehaviour
     {
         over.SetActive(true);
         Time.timeScale = 0f;
+    }
+
+    public void updateTicket(int value)
+    {
+        tickets += value;
+        ticketText.text = "x" + value.ToString();
     }
 
     public void restart()

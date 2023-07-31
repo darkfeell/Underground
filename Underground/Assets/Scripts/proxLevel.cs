@@ -19,6 +19,11 @@ public class proxLevel : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        // (ticket.ins.ticketQuantity == 3)
+        //{
+            //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        //}
+
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
 }
