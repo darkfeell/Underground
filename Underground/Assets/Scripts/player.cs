@@ -117,8 +117,9 @@ public class player : MonoBehaviour
         }
 
         if(health <= 0){
-            GameController.Instance.GameOver();
-         
+            //GameController.Instance.GameOver();
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+
         }
     }
 
@@ -132,7 +133,7 @@ public class player : MonoBehaviour
     {
         if (collision.CompareTag("pit"))
         {
-            GameController.Instance.GameOver();
+            //GameController.Instance.GameOver();
             transform.position = respawnPoint;
         }
         else if (collision.CompareTag("checkpoint"))
