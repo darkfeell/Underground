@@ -108,11 +108,11 @@ public class player : MonoBehaviour
         Debug.Log("l");
 
         if(transform.rotation.y == 0){
-            transform.position += new Vector3(-0.5f,0,0);
+            transform.position += new Vector3(-3f,0,0);
 
         }
         if(transform.rotation.y == 180){
-            transform.position += new Vector3(0.5f,0,0);
+            transform.position += new Vector3(3f,0,0);
             
         }
 

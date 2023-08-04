@@ -14,4 +14,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Tottenham Court Road.unity
     guid: f512b7b1d34f9be4c983bf63fb952230
+  - enabled: 1
+    path: Assets/Scenes/Goodge Street.unity
+    guid: 7ccf58cb7b1ba664096ada72ad561a68
   m_configObjects: {}
