@@ -17,4 +17,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Goodge Street.unity
     guid: 7ccf58cb7b1ba664096ada72ad561a68
+  - enabled: 1
+    path: Assets/Scenes/Warren Street.unity
+    guid: d1c566fc5353663499718cd98aea9b78
+  - enabled: 1
+    path: Assets/Scenes/EndGame.unity
+    guid: 699d9fc48915ddf469d1da4377cb51e9
   m_configObjects: {}
